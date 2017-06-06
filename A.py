@@ -1,9 +1,15 @@
+from __future__ import print_function
 import RPi.GPIO as GPIO
 import time
 import re
 import sys
+import os
+import getopt
+from lazyme.string import color_print
 
 
+os.system('clear')
+sys.stdout.flush()
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -109,7 +115,7 @@ def is_letters_duration_time_valid(d_time):
 
 
 empty()
-letters = 'abca' # USER DEFINED
+letters = 'abcabc' # USER DEFINED
 letter_time = '1' # USER DEFINED
 
 
@@ -117,33 +123,36 @@ letter_time = '1' # USER DEFINED
 
 try:
 	if not is_letters_valid(letters):
-		print 'given string should contain only A, B and C'
+		print('given string should contain only A, B and C')
 		sys.exit(1)
 	letters = letters.upper()
 except:
-	print 'given string should contain only A, B and C'
+	print('given string should contain only A, B and C')
 	sys.exit(1)
 	
 try:
 	if not is_letters_duration_time_valid(letter_time):
-		print 'given time should be integer > 0 and < 10'
+		print('given time should be integer > 0 and < 10')
 		sys.exit(1)
 	letter_time = int(letter_time)
 except:
-	print 'given time should be integer > 0 and < 10'
+	print('given time should be integer > 0 and < 10')
 	sys.exit(1)
 
-
-
 try:
-	for letter in letters:
-		print letter
-		light(letter_dict[letter], letter_time)
+	for i in range(len(letters)):
+		sys.stdout.flush()
+		os.system('clear')
+		print(letters[:i],end='')
+		color_print( letters[i], color = 'red', end='')
+		print(letters[i+1:])
+		light(letter_dict[letters[i]], letter_time)
+		sys.stdout.flush()
 except KeyboardInterrupt:
 	print
-	print 'bye'
+	print('bye')
 	empty()
 	sys.exit(1)
 	
 
-print 'bye'
+print('bye')
