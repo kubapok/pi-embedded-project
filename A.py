@@ -112,11 +112,17 @@ def is_letters_duration_time_valid(d_time):
 	return re.search('^\d$', d_time) 
 
 
-
+optlist, args = getopt.getopt(sys.argv[1:], ':t:s:')
+print(optlist)
+for i in optlist:
+	if i[0] == '-t':
+		letter_time = i[1]
+	if i[0] == '-s':
+		letters = i[1]
 
 empty()
-letters = 'abcabc' # USER DEFINED
-letter_time = '1' # USER DEFINED
+# letters = 'abcabc' # USER DEFINED
+# letter_time = '1' # USER DEFINED
 
 
 
