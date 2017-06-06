@@ -120,11 +120,6 @@ for i in optlist:
 		letters = i[1]
 
 empty()
-# letters = 'abcabc' # USER DEFINED
-# letter_time = '1' # USER DEFINED
-
-
-
 
 try:
 	if not is_letters_valid(letters):
@@ -135,11 +130,9 @@ except:
 	sys.exit(1)
 	
 try:
-	if not is_letters_duration_time_valid(letter_time):
-		sys.exit(1)
-	letter_time = int(letter_time)
+	letter_time = float(letter_time)
 except:
-	print('given time should be integer > 0 and < 10')
+	print('given time should be a number')
 	sys.exit(1)
 
 try:
