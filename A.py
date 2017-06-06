@@ -113,7 +113,6 @@ def is_letters_duration_time_valid(d_time):
 
 
 optlist, args = getopt.getopt(sys.argv[1:], ':t:s:')
-print(optlist)
 for i in optlist:
 	if i[0] == '-t':
 		letter_time = i[1]
@@ -129,7 +128,6 @@ empty()
 
 try:
 	if not is_letters_valid(letters):
-		print('given string should contain only A, B and C')
 		sys.exit(1)
 	letters = letters.upper()
 except:
@@ -138,7 +136,6 @@ except:
 	
 try:
 	if not is_letters_duration_time_valid(letter_time):
-		print('given time should be integer > 0 and < 10')
 		sys.exit(1)
 	letter_time = int(letter_time)
 except:
